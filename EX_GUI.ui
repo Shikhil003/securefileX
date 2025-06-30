@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SecureFileXGUI</class>
+ <widget class="QMainWindow" name="SecureFileXGUI">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>450</width>
+    <height>350</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>SecureFileX - Encryption Tool</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+
+    <item>
+     <widget class="QLabel" name="label_password">
+      <property name="text">
+       <string>Enter Password:</string>
+      </property>
+     </widget>
+    </item>
+
+    <item>
+     <widget class="QLineEdit" name="password_input">
+      <property name="echoMode">
+       <enum>QLineEdit.Password</enum>
+      </property>
+     </widget>
+    </item>
+
+    <item>
+     <widget class="QLabel" name="label_algorithm">
+      <property name="text">
+       <string>Select Encryption Algorithm:</string>
+      </property>
+     </widget>
+    </item>
+
+    <item>
+     <widget class="QComboBox" name="algorithm_dropdown">
+      <item>
+       <property name="text">
+        <string>AES</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>RSA</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ChaCha20</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+
+    <item>
+     <widget class="QPushButton" name="encrypt_button">
+      <property name="text">
+       <string>Encrypt File</string>
+      </property>
+     </widget>
+    </item>
+
+    <item>
+     <widget class="QPushButton" name="decrypt_button">
+      <property name="text">
+       <string>Decrypt File</string>
+      </property>
+     </widget>
+    </item>
+
+    <item>
+     <widget class="QTextEdit" name="log_output">
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+
+   </layout>
+  </widget>
+  <resources/>
+  <connections/>
+ </widget>
+</ui>

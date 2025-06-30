@@ -1,0 +1,113 @@
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QPushButton, QTextEdit, QFileDialog, QSlider, QHBoxLayout, QLabel, QLineEdit, QProgressBar, QCheckBox
+from PyQt5.QtCore import Qt
+from PyQt5 import uic
+
+class UI(QMainWindow):
+    def __init__(self):
+        super(UI, self).__init__()
+        self.setWindowTitle('SecureFileX V1.0')
+        self.setGeometry(100, 100, 600, 400)
+
+        # Main layout
+        self.central_widget = QWidget()
+        self.setCentralWidget(self.central_widget)
+        self.layout = QVBoxLayout(self.central_widget)
+
+        # Title
+        self.title_label = QLabel('SecureFileX V1.0', self)
+        self.title_label.setAlignment(Qt.AlignCenter)
+        self.layout.addWidget(self.title_label)
+
+        # Load File Button
+        self.load_file_button = QPushButton('Load File(s)', self)
+        self.load_file_button.clicked.connect(self.BrowseFiles)
+        self.layout.addWidget(self.load_file_button)
+
+        # Encryption Key Input
+        self.enc_key_label = QLabel('Encryption Key (B):', self)
+        self.layout.addWidget(self.enc_key_label)
+        self.enc_key_input = QLineEdit(self)
+        self.layout.addWidget(self.enc_key_input)
+
+        # Decryption Key Input
+        self.dec_key_label = QLabel('Decryption Key (B):', self)
+        self.layout.addWidget(self.dec_key_label)
+        self.dec_key_input = QLineEdit(self)
+        self.layout.addWidget(self.dec_key_input)
+
+        # Nonce Input
+        self.nonce_label = QLabel('Nonce:', self)
+        self.layout.addWidget(self.nonce_label)
+        self.nonce_input = QLineEdit(self)
+        self.layout.addWidget(self.nonce_input)
+
+        # Encryption System Label
+        self.enc_system_label = QLabel('Encryption System: AES-EAX', self)
+        self.layout.addWidget(self.enc_system_label)
+
+        # Progress Bars
+        self.enc_progressBar = QProgressBar(self)
+        self.layout.addWidget(self.enc_progressBar)
+        self.dec_progressBar = QProgressBar(self)
+        self.layout.addWidget(self.dec_progressBar)
+
+        # Options
+        self.delete_original_file_checkbox = QCheckBox('Delete original file after encryption/decryption', self)
+        self.layout.addWidget(self.delete_original_file_checkbox)
+
+        self.store_key_nonce_checkbox = QCheckBox('Store key and nonce in database', self)
+        self.layout.addWidget(self.store_key_nonce_checkbox)
+
+        self.check_duplicate_key_nonce_checkbox = QCheckBox('Check for duplicate key/nonce in database', self)
+        self.layout.addWidget(self.check_duplicate_key_nonce_checkbox)
+
+        self.keep_original_file_checkbox = QCheckBox('Keep original file if not verified after decryption', self)
+        self.layout.addWidget(self.keep_original_file_checkbox)
+
+        self.delete_key_nonce_checkbox = QCheckBox('Delete key/nonce after decryption', self)
+        self.layout.addWidget(self.delete_key_nonce_checkbox)
+
+        # Buttons for Database Management
+        self.new_db_button = QPushButton('Create New Database', self)
+        self.new_db_button.clicked.connect(self.NewDBFile)
+        self.layout.addWidget(self.new_db_button)
+
+        self.import_db_button = QPushButton('Import Database', self)
+        self.import_db_button.clicked.connect(self.DBBrowser)
+        self.layout.addWidget(self.import_db_button)
+
+        # Feedback Button
+        self.feedback_button = QPushButton('Feedback', self)
+        self.feedback_button.clicked.connect(self.FeedBackRedirect)
+        self.layout.addWidget(self.feedback_button)
+
+        # Show the window
+        self.show()
+
+    def BrowseFiles(self):
+        # Placeholder for file browsing logic
+        file_dialog = QFileDialog()
+        file_dialog.setFileMode(QFileDialog.ExistingFiles)
+        file_dialog.setNameFilter("All Files (*)")
+        file_dialog.setViewMode(QFileDialog.List)
+        if file_dialog.exec_():
+            selected_files = file_dialog.selectedFiles()
+            print("Selected files:", selected_files)  # Replace with actual logic
+
+    def NewDBFile(self):
+        # Placeholder for creating a new database file
+        print("Creating new database file...")  # Replace with actual logic
+
+    def DBBrowser(self):
+        # Placeholder for importing a database file
+        print("Importing database file...")  # Replace with actual logic
+
+    def FeedBackRedirect(self):
+        # Placeholder for feedback logic
+        print("Redirecting to feedback form...")  # Replace with actual logic
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    UIWindow = UI()
+    sys.exit(app.exec_())
